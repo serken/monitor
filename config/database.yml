@@ -5,12 +5,11 @@ default: &default
   timeout: 5000
   username: postgres
   password: postgres
-  port: 5433
 
 development:
   <<: *default
-  database: oiv-ui-dev
+  database: monitor-dev
 
 test:
   <<: *default
-  database: oiv-ui-test
+  database: monitor-test
