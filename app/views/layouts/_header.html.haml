@@ -1,0 +1,25 @@
+%nav.navbar.fixed-top.navbar-toggleable-md.navbar-light.bg-faded
+  %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  %a.navbar-brand{:href => "#"} Navbar
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item
+        %a.nav-link{:href => "/"} Test1
+      %li.nav-item
+        %a.nav-link{:href => "/"} Test2
+    %ul.navbar-nav.mr-auto
+      - if current_user
+        %li
+          %li.nav-item.pull-xs-right
+            %a.nav-link{ href: dashboards_path} My dashboards
+          %li.nav-item.pull-xs-right
+            %a.nav-link{:href => "/"} Profile Settings
+          %li.nav-item.pull-xs-right
+            %a.nav-link{:href => "/users/sign_out", 'data-method': :delete} Logout
+      - else
+        %li
+          %li.nav-item.pull-xs-right
+            %a.nav-link{:href => "/users/sign_in"} Sign in
+          %li.nav-item.pull-xs-right
+            %a.nav-link{:href => "/users/sign_up"} Sign Up

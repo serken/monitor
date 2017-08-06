@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Id:
+  = @widget.id
+%p
+  %b Name:
+  = @widget.name
+%p
+  %b Dashboard:
+  = @widget.dashboard_id
+%p
+  %b Code:
+  = @widget.code
+%p
+  %b Pos x:
+  = @widget.pos_x
+%p
+  %b Pos y:
+  = @widget.pos_y
+%p
+  %b Width:
+  = @widget.width
+%p
+  %b Height:
+  = @widget.height
+
+= link_to 'Edit', edit_widget_path(@widget)
+\|
+= link_to 'Back', widgets_path

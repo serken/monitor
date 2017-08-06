@@ -1,0 +1,6 @@
+- @dashboard.widgets.each do |widget|
+  = place_widget(widget)
+
+= link_to 'Edit', edit_dashboard_path(@dashboard)
+\|
+= link_to 'Back', dashboards_path

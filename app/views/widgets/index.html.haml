@@ -1,0 +1,35 @@
+%h1 Listing widgets
+
+%table
+  %thead
+    %tr
+      %th Id
+      %th Name
+      %th Dashboard
+      %th Code
+      %th Pos x
+      %th Pos y
+      %th Width
+      %th Height
+      %th
+      %th
+      %th
+
+  %tbody
+    - @widgets.each do |widget|
+      %tr
+        %td= widget.id
+        %td= widget.name
+        %td= widget.dashboard_id
+        %td= widget.code
+        %td= widget.pos_x
+        %td= widget.pos_y
+        %td= widget.width
+        %td= widget.height
+        %td= link_to 'Show', widget
+        %td= link_to 'Edit', edit_widget_path(widget)
+        %td= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Widget', new_widget_path
