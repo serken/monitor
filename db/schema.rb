@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806192934) do
+ActiveRecord::Schema.define(version: 20170823185234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,10 +45,12 @@ ActiveRecord::Schema.define(version: 20170806192934) do
     t.text     "code"
     t.integer  "pos_x"
     t.integer  "pos_y"
-    t.integer  "width"
-    t.integer  "height"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.float    "width"
+    t.float    "height"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.float    "scale_x",      default: 1.0
+    t.float    "scale_y",      default: 1.0
   end
 
 end

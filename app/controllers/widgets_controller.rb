@@ -1,5 +1,6 @@
 class WidgetsController < ApplicationController
   before_action :set_widget, only: [:show, :edit, :update, :destroy]
+  before_action :set_dashboard
 
   # GET /widgets
   # GET /widgets.json
@@ -19,16 +20,17 @@ class WidgetsController < ApplicationController
 
   # GET /widgets/1/edit
   def edit
+    render partial: 'form'
   end
 
   # POST /widgets
   # POST /widgets.json
   def create
-    @widget = Widget.new(widget_params)
+    @widget = @dashboard.widgets.new(widget_params)
 
     respond_to do |format|
       if @widget.save
-        format.html { redirect_to @widget, notice: 'Widget was successfully created.' }
+        format.html { redirect_to @dashboard, notice: 'Widget was successfully created.' }
         format.json { render :show, status: :created, location: @widget }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class WidgetsController < ApplicationController
   def update
     respond_to do |format|
       if @widget.update(widget_params)
-        format.html { redirect_to @widget, notice: 'Widget was successfully updated.' }
+        format.html { redirect_to @dashboard, notice: 'Widget was successfully updated.' }
         format.json { render :show, status: :ok, location: @widget }
       else
         format.html { render :edit }
@@ -67,8 +69,12 @@ class WidgetsController < ApplicationController
       @widget = Widget.find(params[:id])
     end
 
+    def set_dashboard
+      @dashboard = Dashboard.find(params[:dashboard_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def widget_params
-      params.require(:widget).permit(:id, :name, :dashboard_id, :code, :pos_x, :pos_y, :width, :height)
+      params.require(:widget).permit(:id, :name, :code, :scale_x, :scale_y, :pos_x, :pos_y, :width, :height)
     end
 end

@@ -1,6 +1,17 @@
-- @dashboard.widgets.each do |widget|
-  = place_widget(widget)
+- @dashboard.widgets.sort.each do |widget|
+  .widget-container{ id: "widget-#{widget.id}", 'data-edit-url' => edit_dashboard_widget_path(@dashboard, widget), style: "transform: scale(#{widget.scale_x}, #{widget.scale_y});; padding-left: #{widget.pos_x}px; padding-top: #{widget.pos_y}px;" }
+    .manage.float-right.btn-group{role: 'group'}
+      .edit-widget.icon-16x16
+        = open_iconic 'edit-widget', :cog
+      .move-widget.icon-16x16
+        = open_iconic :icon, :move
+      .resize-witdget.icon-16x16
+        = open_iconic :icon, :resize_both
+    .body
+      = widget.code.html_safe
 
+= link_to 'Add Widget', new_dashboard_widget_path(@dashboard)
+\|
 = link_to 'Edit', edit_dashboard_path(@dashboard)
 \|
 = link_to 'Back', dashboards_path
