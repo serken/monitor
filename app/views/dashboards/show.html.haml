@@ -1,14 +1,14 @@
 - @dashboard.widgets.sort.each do |widget|
-  .widget-container{ id: "widget-#{widget.id}", 'data-edit-url' => edit_dashboard_widget_path(@dashboard, widget), style: "transform: scale(#{widget.scale_x}, #{widget.scale_y});; padding-left: #{widget.pos_x}px; padding-top: #{widget.pos_y}px;" }
+  .widget-container.draggable{ id: "#{widget.id}", 'data-edit-url' => edit_dashboard_widget_path(@dashboard, widget), style: "transform: scale(#{widget.scale_x}, #{widget.scale_y}); width: #{widget.width}px; height: #{widget.height}px; margin-left: #{widget.pos_x}px; margin-top: #{widget.pos_y}px;" }
     .manage.float-right.btn-group{role: 'group'}
       .edit-widget.icon-16x16
         = open_iconic 'edit-widget', :cog
       .move-widget.icon-16x16
-        = open_iconic :icon, :move
-      .resize-witdget.icon-16x16
-        = open_iconic :icon, :resize_both
+        = open_iconic 'icon-move', :move
     .body
       = widget.code.html_safe
+    .bottom.resize{ 'resize-edges'=>"bottom right" }
+      🡮
 
 = link_to 'Add Widget', new_dashboard_widget_path(@dashboard)
 \|

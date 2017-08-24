@@ -81,6 +81,8 @@ GEM
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
     i18n (0.8.6)
+    interact-rails (0.0.1)
+      railties
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -198,6 +200,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   haml-rails
+  interact-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen

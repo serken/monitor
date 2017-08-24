@@ -16,6 +16,7 @@ gem 'haml-rails'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'tether-rails'
 gem 'open-iconic-rails'
+gem 'interact-rails'
 
 group :development do
   gem 'web-console'
