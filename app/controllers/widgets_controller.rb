@@ -75,6 +75,13 @@ class WidgetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def widget_params
+      pos_x, pos_y = params[:widget].slice(:pos_x, :pos_y).values
+      if pos_x
+        params[:widget][:pos_x] = @widget.pos_x.to_i + pos_x.to_i
+      end
+      if pos_y
+        params[:widget][:pos_y] = @widget.pos_y.to_i + pos_y.to_i
+      end
       params.require(:widget).permit(:id, :name, :code, :scale_x, :scale_y, :pos_x, :pos_y, :width, :height)
     end
 end

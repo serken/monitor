@@ -19,6 +19,7 @@ gem 'open-iconic-rails'
 gem 'interact-rails'
 
 group :development do
+  gem 'pry'
   gem 'web-console'
   gem 'listen'
 end

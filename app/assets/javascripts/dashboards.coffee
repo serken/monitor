@@ -26,7 +26,9 @@ $().ready ->
     allowFrom: '.icon-move'
     autoScroll: true
     onmove: dragMoveListener
-   .resizable
+    restrict:
+      restriction: 'parent'
+  .resizable
     edges:
       right: '[resize-edges~=right]'
       bottom: '[resize-edges~=bottom]'
@@ -46,15 +48,29 @@ $().ready ->
     return
   .on 'dragend', (event) ->
     id = event.target.id
-    x = event.clientX - event.clientX0
-    y = event.clientY - event.clientY0
+    x = event.dx
+    y = event.dy
     $.ajax
       method: 'patch'
       url: location.href + '/widgets/' + id
+      async: true
       data:
         widget:
           pos_x: x
           pos_y: y
+
+  .on 'resizeend', (event) ->
+    id = event.target.id
+    width = parseInt($(event.target).css('width'))
+    height = parseInt($(event.target).css('height'))
+    $.ajax
+      method: 'patch'
+      url: location.href + '/widgets/' + id
+      async: true
+      data:
+        widget:
+          width: width
+          height: height
 
   # this is used later in the resizing and gesture demos
   window.dragMoveListener = dragMoveListener
