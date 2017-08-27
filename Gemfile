@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 

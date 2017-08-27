@@ -22,30 +22,11 @@ $().ready ->
     target.setAttribute 'data-y', y
     return
 
-  interact('.draggable', allowFrom: '.icon-move, [resize-edges~=right], [resize-edges~=bottom]').draggable
-    allowFrom: '.icon-move'
+  interact('.draggable', allowFrom: '.icon-move').draggable
     autoScroll: true
     onmove: dragMoveListener
     restrict:
       restriction: 'parent'
-  .resizable
-    edges:
-      right: '[resize-edges~=right]'
-      bottom: '[resize-edges~=bottom]'
-  .on 'resizemove', (event) ->
-    target = event.target
-    x = parseFloat(target.getAttribute('data-x')) or 0
-    y = parseFloat(target.getAttribute('data-y')) or 0
-    # update the element's style
-    target.style.width = event.clientX + 'px'
-    target.style.height = event.clientY + 'px'
-    # translate when resizing from top or left edges
-    x += event.dtx
-    y += event.dty
-    target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px,' + y + 'px)'
-    target.setAttribute 'data-x', x
-    target.setAttribute 'data-y', y
-    return
   .on 'dragend', (event) ->
     id = event.target.id
     x = event.dx
@@ -58,8 +39,9 @@ $().ready ->
         widget:
           pos_x: x
           pos_y: y
-
-  .on 'resizeend', (event) ->
+  $('.draggable').resizable
+    handles: 's, e'
+  .on 'resizestop', (event, ui) ->
     id = event.target.id
     width = parseInt($(event.target).css('width'))
     height = parseInt($(event.target).css('height'))

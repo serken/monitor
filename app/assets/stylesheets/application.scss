@@ -13,6 +13,7 @@
  */
 @import "tether";
 @import "bootstrap";
+@import 'jquery-ui';
 
 body {
   padding-top: 70px;
@@ -40,14 +41,4 @@ body {
   margin-right: 5px;
   width: 16px;
   height: 16px;
-}
-
-[resize-edges~=bottom] {
-  position: absolute;
-  bottom: 0;
-}
-
-[resize-edges~=right] {
-  position: absolute;
-  right: 0;
 }
