@@ -1,4 +1,4 @@
-= form_for @widget, url: dashboard_widget_path do |f|
+= form_for @widget, url: @widget ? dashboard_widget_path : dashboard_widgets_path do |f|
   - if @widget.errors.any?
     #error_explanation
       %h2= "#{pluralize(@widget.errors.count, "error")} prohibited this widget from being saved:"
